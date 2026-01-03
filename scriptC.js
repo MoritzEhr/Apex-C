@@ -38,18 +38,7 @@ function trackPurchaseCompleted() {
 
     const transactionId = generateTransactionId();
 
-    // Debug: Zeige Daten in Konsole
-    console.log('📊 GA4 Tracking Event wird gesendet:', {
-      event_name: 'purchase_completed',
-      transaction_id: transactionId,
-      uid_token: uid,
-      tip_percentage: tipPercentage,
-      bestseller_count: countBestsellers(),
-      has_insurance: cartState.hasInsurance,
-      is_co2_neutral: cartState.isCO2Neutral,
-      has_subscription: cartState.hasSubscription,
-      total_value: totals.total
-    });
+
 
     // Prüfe ob gtag verfügbar ist
     if (typeof gtag === 'function') {
@@ -66,8 +55,7 @@ function trackPurchaseCompleted() {
         currency: 'EUR'
       });
 
-      // Bestätigung in Konsole
-      console.log('✅ Event erfolgreich an GA4 gesendet via gtag()');
+
     } else {
       console.error('❌ gtag ist nicht verfügbar! Stellen Sie sicher, dass Google Analytics korrekt geladen wurde.');
     }
