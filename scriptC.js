@@ -1036,10 +1036,16 @@ function renderCart() {
                     <span>${totals.extras.toFixed(2)}€</span>
                   </div>
                 ` : ""}
+                ${SHOW_PRICE_BREAKDOWN ? `
+                  <div class="cart-summary-row">
+                    <span>Lieferkosten</span>
+                    <span>${totals.deliveryFee.toFixed(2)}€</span>
+                  </div>
+                ` : ""}
               </div>
               <div class="cart-total">
                 <span class="cart-total-label">Gesamt</span>
-                <span class="cart-total-value">${(totals.subtotal + totals.extras).toFixed(2)}€</span>
+                <span class="cart-total-value">${(totals.subtotal + totals.extras + totals.deliveryFee).toFixed(2)}€</span>
               </div>
               ${!meetsMinimumOrder ? `
                 <div class="minimum-order-warning" style="background: rgba(234, 179, 8, 0.1); border: 1px solid rgba(234, 179, 8, 0.2); border-radius: 0.5rem; padding: 0.75rem; margin-bottom: 0.75rem;">
