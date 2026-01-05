@@ -471,6 +471,8 @@ const INCREASE_TOTAL_BY_5_PERCENT = false; // Set to true to increase total by 5
 // Toggle variable to show/hide trash icon and style minus button
 const SHOW_TRASH_ICON = true; // Set to true to show trash icon and white minus; false to hide trash and blend minus
 
+const ADD_AUTO_DRINK = false; // Set to true to add auto drink to cart
+
 let cartState = {
   selectedTipPercent: 0,
   hasInsurance: false,
@@ -543,30 +545,32 @@ function getCartTotals() {
 }
 
 function checkAndAddAutoDrink() {
-  const AUTO_DRINK_ID = "auto-drink-free";
-  const MINIMUM_VALUE_FOR_AUTO_DRINK = 15;
-  const subtotal = getTotalPrice();
+  if (ADD_AUTO_DRINK) {
+    const AUTO_DRINK_ID = "auto-drink-free";
+    const MINIMUM_VALUE_FOR_AUTO_DRINK = 15;
+    const subtotal = getTotalPrice();
 
-  // Find existing auto drink
-  const autoDrinkExists = cart.find((i) => i.id === AUTO_DRINK_ID);
+    // Find existing auto drink
+    const autoDrinkExists = cart.find((i) => i.id === AUTO_DRINK_ID);
 
-  // Find a drink to use (use first drink from menu)
-  const drinkItem = menuItems.find((item) => item.category === "drinks");
+    // Find a drink to use (use first drink from menu)
+    const drinkItem = menuItems.find((item) => item.category === "drinks");
 
-  if (!drinkItem) return; // No drinks available
+    if (!drinkItem) return; // No drinks available
 
-  // Only add auto drink once when threshold is reached, and only if it was never added before
-  if (subtotal >= MINIMUM_VALUE_FOR_AUTO_DRINK && !autoDrinkExists && !cartState.autoDrinkWasAdded) {
-    const autoDrink = {
-      ...drinkItem,
-      id: AUTO_DRINK_ID,
-      name: drinkItem.name,
-      description: "90% unserer Kunden bestellen auch dieses!",
-      price: drinkItem.price,
-      isAutoAdded: true
-    };
-    cart.push({ ...autoDrink, quantity: 1 });
-    cartState.autoDrinkWasAdded = true; // Mark as added, so it won't be added again
+    // Only add auto drink once when threshold is reached, and only if it was never added before
+    if (subtotal >= MINIMUM_VALUE_FOR_AUTO_DRINK && !autoDrinkExists && !cartState.autoDrinkWasAdded) {
+      const autoDrink = {
+        ...drinkItem,
+        id: AUTO_DRINK_ID,
+        name: drinkItem.name,
+        description: "90% unserer Kunden bestellen auch dieses!",
+        price: drinkItem.price,
+        isAutoAdded: true
+      };
+      cart.push({ ...autoDrink, quantity: 1 });
+      cartState.autoDrinkWasAdded = true; // Mark as added, so it won't be added again
+    }
   }
 }
 
@@ -857,6 +861,7 @@ function renderCart() {
                   <p class="subscription-option-text">
                     Immer die schnellste Lieferung und exklusive Angebote erhalten!<br>
                     Testen Sie es jetzt für 0,00€.
+                    Danach 4,99€ pro Monat! Jederzeit kündbar. 
                   </p>
                 </div>
               </label>
