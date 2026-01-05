@@ -839,6 +839,7 @@ function renderCart() {
                 <span>${totals.subtotal.toFixed(2)}€</span>
               </div>
               ` : ""}
+              \u003c!-- DEBUG: deliveryFee = ${totals.deliveryFee} --\u003e
               <div class="price-row">
                 <span>Liefergebühr</span>
                 <span>${totals.deliveryFee.toFixed(2)}€</span>
