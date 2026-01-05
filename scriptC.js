@@ -799,6 +799,9 @@ function renderCart() {
   const remainingAmount = Math.max(0, MINIMUM_ORDER_VALUE - totals.total);
 
   if (cartState.showOrderSummary) {
+    console.log('DEBUG: Rendering Order Summary');
+    console.log('DEBUG: totals =', totals);
+    console.log('DEBUG: SHOW_PRICE_BREAKDOWN =', SHOW_PRICE_BREAKDOWN);
     sidebar.innerHTML = `
         <div class="order-summary-view active">
           <div class="cart-header">
