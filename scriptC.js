@@ -19,6 +19,8 @@ function getUrlParameter(name) {
   return urlParams.get(name) || null;
 }
 
+
+
 /**
  * Zähle Bestseller im Warenkorb
  */
@@ -35,7 +37,9 @@ function trackPurchaseCompleted() {
     const totals = getCartTotals();
     const tipPercentage = Math.round(cartState.selectedTipPercent * 100); // In Prozent (z.B. 10 für 10%)
     const uid = getUrlParameter('uid'); // Hole uid aus URL
-
+    const proid = getUrlParameter('proid'); // Hole proid aus URL
+    const sessionid = getUrlParameter('sessionid'); // Hole sessionid aus URL
+    const studyid = getUrlParameter('studyid'); // Hole studyid aus URL
     const transactionId = generateTransactionId();
 
 
@@ -46,6 +50,9 @@ function trackPurchaseCompleted() {
       gtag('event', 'purchase_completed', {
         transaction_id: transactionId,
         uid_token: uid,
+        proid_token: proid,
+        sessionid_token: sessionid,
+        studyid_token: studyid,
         tip_percentage: tipPercentage,
         bestseller_count: countBestsellers(),
         has_insurance: cartState.hasInsurance,
@@ -456,13 +463,13 @@ let cart = [];
 let activeCategory = null;
 let searchQuery = "";
 // Toggle variable to show/hide price breakdown details
-const SHOW_PRICE_BREAKDOWN = false; // Set to true to show subtotal, extras, delivery; false to show only total
+const SHOW_PRICE_BREAKDOWN = true; // Set to true to show subtotal, extras, delivery; false to show only total
 
 // Toggle variable to increase total by 5%
-const INCREASE_TOTAL_BY_5_PERCENT = true; // Set to true to increase total by 5%
+const INCREASE_TOTAL_BY_5_PERCENT = false; // Set to true to increase total by 5%
 
 // Toggle variable to show/hide trash icon and style minus button
-const SHOW_TRASH_ICON = false; // Set to true to show trash icon and white minus; false to hide trash and blend minus
+const SHOW_TRASH_ICON = true; // Set to true to show trash icon and white minus; false to hide trash and blend minus
 
 let cartState = {
   selectedTipPercent: 0,
