@@ -464,6 +464,7 @@ let activeCategory = null;
 let searchQuery = "";
 // Toggle variable to show/hide price breakdown details
 const SHOW_PRICE_BREAKDOWN = true; // Set to true to show subtotal, extras, delivery; false to show only total
+console.log('DEBUG: SHOW_PRICE_BREAKDOWN =', SHOW_PRICE_BREAKDOWN);
 
 // Toggle variable to increase total by 5%
 const INCREASE_TOTAL_BY_5_PERCENT = false; // Set to true to increase total by 5%
