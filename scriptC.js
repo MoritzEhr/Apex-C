@@ -464,7 +464,6 @@ let activeCategory = null;
 let searchQuery = "";
 // Toggle variable to show/hide price breakdown details
 const SHOW_PRICE_BREAKDOWN = true; // Set to true to show subtotal, extras, delivery; false to show only total
-console.log('DEBUG: SHOW_PRICE_BREAKDOWN =', SHOW_PRICE_BREAKDOWN);
 
 // Toggle variable to increase total by 5%
 const INCREASE_TOTAL_BY_5_PERCENT = false; // Set to true to increase total by 5%
@@ -799,9 +798,6 @@ function renderCart() {
   const remainingAmount = Math.max(0, MINIMUM_ORDER_VALUE - totals.total);
 
   if (cartState.showOrderSummary) {
-    console.log('DEBUG: Rendering Order Summary');
-    console.log('DEBUG: totals =', totals);
-    console.log('DEBUG: SHOW_PRICE_BREAKDOWN =', SHOW_PRICE_BREAKDOWN);
     sidebar.innerHTML = `
         <div class="order-summary-view active">
           <div class="cart-header">
@@ -839,7 +835,6 @@ function renderCart() {
                 <span>${totals.subtotal.toFixed(2)}€</span>
               </div>
               ` : ""}
-              \u003c!-- DEBUG: deliveryFee = ${totals.deliveryFee} --\u003e
               <div class="price-row">
                 <span>Liefergebühr</span>
                 <span>${totals.deliveryFee.toFixed(2)}€</span>
