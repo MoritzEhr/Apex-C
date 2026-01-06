@@ -19,8 +19,6 @@ function getUrlParameter(name) {
   return urlParams.get(name) || null;
 }
 
-
-
 /**
  * Zähle Bestseller im Warenkorb
  */
@@ -49,7 +47,6 @@ function trackPurchaseCompleted() {
       // Sende Event direkt an GA4 mit gtag
       gtag('event', 'purchase_completed', {
         transaction_id: transactionId,
-        uid_token: uid,
         proid_token: proid,
         sessionid_token: sessionid,
         studyid_token: studyid,
@@ -1245,16 +1242,22 @@ function attachCartListeners() {
 
         clearCart();
         closeCart();
-        showOrderConfirmation();
+        showOrderConfirmation(totals.total);
       }
     });
   }
 }
 
 // Order Confirmation Modal
-function showOrderConfirmation() {
+function showOrderConfirmation(orderTotal) {
   const modal = document.getElementById("orderModal");
   if (modal) {
+    // Set the order total value
+    const orderValueElement = modal.querySelector("#orderValue");
+    if (orderValueElement && orderTotal) {
+      orderValueElement.textContent = orderTotal.toFixed(2);
+    }
+
     modal.style.display = "flex";
     document.body.style.overflow = "hidden";
   }
