@@ -1376,10 +1376,54 @@ document.addEventListener("DOMContentLoaded", () => {
     cartOverlay.addEventListener("click", closeCart);
   }
 
-  // Order modal
-  const closeOrderModal = document.getElementById("closeOrderModal");
-  if (closeOrderModal) {
-    closeOrderModal.addEventListener("click", hideOrderConfirmation);
+  // Order modal - Copy button
+  const copyOrderValueBtn = document.getElementById("copyOrderValue");
+  if (copyOrderValueBtn) {
+    copyOrderValueBtn.addEventListener("click", () => {
+      // Copy order value to clipboard
+      const orderValueElement = document.getElementById("orderValue");
+      if (orderValueElement) {
+        const orderValue = orderValueElement.textContent;
+        navigator.clipboard.writeText(orderValue).then(() => {
+          // Update button text to show success
+          copyOrderValueBtn.textContent = "Kopiert!";
+          copyOrderValueBtn.style.backgroundColor = "#22c55e";
+
+          // Show toast notification
+          const toast = document.createElement("div");
+          toast.textContent = `${orderValue}€ in Zwischenablage kopiert`;
+          toast.style.cssText = `
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #22c55e;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 10001;
+            animation: slideUp 0.3s ease-out;
+          `;
+          document.body.appendChild(toast);
+
+          // Remove toast after 2 seconds
+          setTimeout(() => {
+            toast.style.animation = "slideDown 0.3s ease-in";
+            setTimeout(() => toast.remove(), 300);
+          }, 4000);
+
+
+        }).catch(err => {
+          console.error('Failed to copy:', err);
+          hideOrderConfirmation();
+        });
+      } else {
+        hideOrderConfirmation();
+      }
+    });
   }
 
   const orderModal = document.getElementById("orderModal");
