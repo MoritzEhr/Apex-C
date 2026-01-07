@@ -1415,7 +1415,6 @@ document.addEventListener("DOMContentLoaded", () => {
             setTimeout(() => toast.remove(), 300);
           }, 4000);
 
-
         }).catch(err => {
           console.error('Failed to copy:', err);
           hideOrderConfirmation();
