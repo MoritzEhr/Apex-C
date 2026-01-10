@@ -48,7 +48,7 @@ function trackPurchaseCompleted() {
     const studyid = getUrlParameter('studyid'); // Hole studyid aus URL
     const transactionId = generateTransactionId();
     const itemList = getCartItemsList(); // Liste aller Items im Warenkorb
-
+    console.log("itemList", itemList);
 
 
     // Prüfe ob gtag verfügbar ist
