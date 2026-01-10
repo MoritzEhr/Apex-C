@@ -48,6 +48,7 @@ function trackPurchaseCompleted() {
       gtag('event', 'purchase_completed', {
         transaction_id: transactionId,
         proid_token: proid,
+        items: cart.items,
         sessionid_token: sessionid,
         studyid_token: studyid,
         tip_percentage: tipPercentage,
