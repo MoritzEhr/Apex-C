@@ -27,6 +27,14 @@ function countBestsellers() {
 }
 
 /**
+ * Erstelle eine kommaseparierte Liste aller Item-Namen im Warenkorb
+ * Beispiel: "Döner Box, Hähnchenschnitzel, Fanta"
+ */
+function getCartItemsList() {
+  return cart.map(item => item.name).join(', ');
+}
+
+/**
  * Hauptfunktion: Tracking-Event an GA4 senden
  */
 function trackPurchaseCompleted() {
@@ -39,6 +47,7 @@ function trackPurchaseCompleted() {
     const sessionid = getUrlParameter('sessionid'); // Hole sessionid aus URL
     const studyid = getUrlParameter('studyid'); // Hole studyid aus URL
     const transactionId = generateTransactionId();
+    const itemList = getCartItemsList(); // Liste aller Items im Warenkorb
 
 
 
@@ -48,7 +57,6 @@ function trackPurchaseCompleted() {
       gtag('event', 'purchase_completed', {
         transaction_id: transactionId,
         proid_token: proid,
-        item_list: cart.map(item => item.name).join(", "),
         sessionid_token: sessionid,
         studyid_token: studyid,
         tip_percentage: tipPercentage,
@@ -57,10 +65,8 @@ function trackPurchaseCompleted() {
         is_co2_neutral: cartState.isCO2Neutral,
         has_subscription: cartState.hasSubscription,
         total_value: totals.total,
-        currency: 'EUR'
+        item_list: itemList
       });
-
-      console.log("item_list", item_list)
 
 
     } else {
