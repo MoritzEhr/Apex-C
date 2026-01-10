@@ -60,6 +60,8 @@ function trackPurchaseCompleted() {
         currency: 'EUR'
       });
 
+      console.log("item_list", item_list)
+
 
     } else {
       console.error('gtag ist nicht verfügbar! Stellen Sie sicher, dass Google Analytics korrekt geladen wurde.');
