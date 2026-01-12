@@ -26,7 +26,7 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-WQJH1QQ03G', {debug_mode: true});
+  gtag('config', 'G-WQJH1QQ03G');
 </script>
 
 <body>
@@ -328,14 +328,37 @@
             </div>
             
             <div class="order-modal-body">
-                <p class="order-modal-text">
-                    Vielen Dank für Ihre Bestellung! 
+                <p class="order-modal-text" style="margin-bottom: 1.5rem;">
+                    Vielen Dank für Ihre Bestellung!
                 </p>
-                <h3>Bitte KOPIEREN Sie Ihren Bestellwert und fügen Sie ihn anschließend in die Umfrage ein!</h3>
-                <h2 class="order-modal-text" style="font-weight: 600; color: hsl(var(--primary)); margin-top: 0.5rem;">
-                    Ihr Bestellwert ist: <span id="orderValue">0.00</span>
-                </h2>
-                <button id="copyOrderValue" class="order-modal-btn">Kopieren</button>
+                
+                <!-- Schritt 1: Codewörter -->
+                <div style="margin-bottom: 1rem;">
+                    <p style="font-size: 1.1rem; color: white; margin-bottom: 0.5rem; font-weight: 600;">
+                        <span style="display: inline-block; width: 1.8rem; height: 1.8rem; background: hsl(var(--primary)); color: white; border-radius: 50%; text-align: center; line-height: 1.8rem; margin-right: 0.5rem; font-size: 1rem;">1</span>
+                        Merken Sie sich diese beiden Codewörter
+                    </p>
+                    <div style="padding: 1rem; background: rgba(255, 107, 53, 0.1); border-radius: 12px; border: 2px solid rgba(255, 107, 53, 0.4);">
+                        <p style="font-size: 0.85rem; color: #9ca3af; margin-bottom: 0.25rem;">Ihre Codewörter:</p>
+                        <p style="font-size: 1.75rem; font-weight: 700; color: hsl(var(--primary)); letter-spacing: 3px; margin: 0;">ESSEN &nbsp; PIZZA</p>
+                    </div>
+                </div>
+                
+                <!-- Schritt 2: Bestellwert -->
+                <div style="margin-bottom: 1.5rem;">
+                    <p style="font-size: 1.1rem; color: white; margin-bottom: 0.5rem; font-weight: 600;">
+                        <span style="display: inline-block; width: 1.8rem; height: 1.8rem; background: hsl(var(--primary)); color: white; border-radius: 50%; text-align: center; line-height: 1.8rem; margin-right: 0.5rem; font-size: 1rem;">2</span>
+                        Kopieren Sie Ihren Bestellwert für die Umfrage
+                    </p>
+                    <div style="padding: 1rem; background: rgba(34, 197, 94, 0.1); border-radius: 12px; border: 2px solid rgba(34, 197, 94, 0.4);">
+                        <p style="font-size: 0.85rem; color: #9ca3af; margin-bottom: 0.25rem;">Ihr Bestellwert:</p>
+                        <p style="font-size: 2rem; font-weight: 700; color: #22c55e; margin: 0;"><span id="orderValue">0.00</span> €</p>
+                    </div>
+                </div>
+                
+                <button id="copyOrderValue" class="order-modal-btn">
+                    <i class="fa-solid fa-copy" style="margin-right: 0.5rem;"></i>Bestellwert kopieren
+                </button>
             </div>
             <div class="order-modal-deco-1"></div>
             <div class="order-modal-deco-2"></div>
