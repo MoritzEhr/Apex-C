@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
-
-/* CSS Variables - Design System */
 :root {
   --background: 224 20% 8%;
   --foreground: 0 0% 98%;
@@ -24,7 +22,6 @@
   --glow-primary: 0 0 40px hsl(24 95% 53% / 0.3);
 }
 
-/* Base Styles */
 * {
   margin: 0;
   padding: 0;
@@ -44,7 +41,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Utility Classes */
 .container {
   width: 100%;
   max-width: 1400px;
@@ -74,7 +70,6 @@ body {
   }
 }
 
-/* Header */
 .header {
   position: sticky;
   top: 0;
@@ -261,7 +256,6 @@ body {
   animation: fadeIn 0.4s ease-out;
 }
 
-/* Hero Section */
 .hero {
   position: relative;
   height: 400px;
@@ -397,7 +391,6 @@ body {
   color: hsl(var(--muted-foreground));
 }
 
-/* Category Bar */
 .category-bar {
   position: sticky;
   top: 64px;
@@ -450,7 +443,6 @@ body {
   box-shadow: var(--glow-primary);
 }
 
-/* Menu Section */
 .menu-section {
   padding: 2rem 0;
 }
@@ -476,7 +468,6 @@ body {
   gap: 1.5rem;
 }
 
-/* When menu-grid is in grouped mode, it should be a block container */
 #menuGrid.menu-grid-grouped {
   display: block;
 }
@@ -528,7 +519,6 @@ body {
   border-radius: 9999px;
 }
 
-/* Menu Card */
 .menu-card {
   background-color: hsl(var(--card));
   border-radius: 1rem;
@@ -660,7 +650,6 @@ body {
   transform: scale(0.95);
 }
 
-/* Empty State */
 .empty-state {
   text-align: center;
   padding: 4rem 1rem;
@@ -693,7 +682,6 @@ body {
   color: hsl(var(--muted-foreground));
 }
 
-/* Footer */
 .footer {
   background-color: hsl(var(--card));
   border-top: 1px solid hsl(var(--border));
@@ -841,7 +829,6 @@ body {
   color: hsl(var(--primary));
 }
 
-/* Analytics Banner */
 .analytics-banner {
   background-color: hsl(var(--secondary) / 0.5);
   border-top: 1px solid hsl(var(--border));
@@ -878,7 +865,6 @@ body {
   }
 }
 
-/* Cart Sidebar */
 .cart-overlay {
   position: fixed;
   inset: 0;
@@ -972,7 +958,6 @@ body {
   color: hsl(var(--foreground));
   font-size: 1.125rem;
 }
-
 
 .cart-content {
   flex: 1;
@@ -1413,7 +1398,6 @@ body {
   box-shadow: 0 8px 30px -4px hsl(220 13% 13% / 0.15);
 }
 
-/* Order Summary View */
 .order-summary-view {
   display: none;
   flex-direction: column;
@@ -1549,7 +1533,6 @@ body {
   color: hsl(var(--success));
 }
 
-/* Order Confirmation Modal */
 .order-modal {
   position: fixed;
   inset: 0;
@@ -1694,7 +1677,6 @@ body {
   transform: translate(50%, 50%);
 }
 
-/* Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -1775,7 +1757,6 @@ body {
   }
 }
 
-/* Popup */
 .popup-overlay {
   position: fixed;
   inset: 0;
@@ -1853,10 +1834,8 @@ body {
   margin-bottom: 0.5rem;
 }
 
-/* --- Mobile Optimization (Added by Antigravity) --- */
 @media (max-width: 639px) {
 
-  /* 1. Compact Hero to show menu faster */
   .hero {
     height: 280px;
   }
@@ -1876,7 +1855,6 @@ body {
     line-height: 1.4;
   }
 
-  /* 2. Horizontal Menu Cards on Mobile */
   .menu-card {
     display: flex;
     flex-direction: row;
@@ -1918,7 +1896,6 @@ body {
     min-height: 0;
   }
 
-  /* Price positioning adjustment for horizontal layout */
   .menu-card-price {
     position: absolute;
     top: auto;
@@ -1930,19 +1907,17 @@ body {
     border: 1px solid hsl(var(--border));
   }
 
-  /* Make button smaller/compact */
   .menu-card-btn {
     padding: 0.5rem;
     font-size: 0.8rem;
     margin-top: auto;
     width: auto;
-    /* Allow button to shrink? No, keep full width of container */
+    
     align-self: flex-start;
-    /* Or stretch? */
+    
     width: 100%;
   }
 
-  /* 3. Category Bar adjustments */
   .category-btn {
     padding: 0.5rem 0.75rem;
     font-size: 0.8rem;
